@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <main className="flex flex-col p-4">
         <SearchBar />
-        <ExpenseBar availableAmount={90} spentAmount={90} />
+        <ExpenseBar />
         <ExpenseList />
       </main>
       <footer>
