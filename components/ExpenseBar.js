@@ -1,8 +1,10 @@
 import React from "react";
-import Image from "next/image";
+import { useSelector, useDispatch } from "react-redux";
 import { GiMoneyStack, GiPayMoney } from "react-icons/gi";
 
-const ExpenseBar = ({ availableAmount, spentAmount }) => {
+const ExpenseBar = () => {
+  const dispatch = useDispatch();
+  const { spent, remaining } = useSelector((state) => state.amount);
   return (
     <div className="expense-box flex items-center justify-between w-full rounded-full px-4 py-2 my-2">
       <div className=" flex items-center">
@@ -14,7 +16,7 @@ const ExpenseBar = ({ availableAmount, spentAmount }) => {
             Available
           </h3>
           <p className="text-md font-semibold">
-            <b>$</b> {availableAmount}
+            <b>$</b> {remaining}
           </p>
         </div>
       </div>
@@ -23,7 +25,7 @@ const ExpenseBar = ({ availableAmount, spentAmount }) => {
         <div className="flex flex-col items-end mr-2">
           <h3 className="spent-bar-text font-extrabold text-xl">Spent</h3>
           <p className="text-md font-semibold">
-            <b>$</b> {spentAmount}
+            <b>$</b> {spent}
           </p>
         </div>
         <div className="flex items-center justify-center expense-image w-12 h-12 -mr-1 ml-2 rounded-full">
